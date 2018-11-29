@@ -3,6 +3,8 @@ package com.khieuthichien.viewpager.ui;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -17,15 +19,19 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.khieuthichien.viewpager.R;
 import com.khieuthichien.viewpager.adapter.CheckAnswerAdapter;
 import com.khieuthichien.viewpager.database.DatabaseHelper;
+import com.khieuthichien.viewpager.database.QuestionController;
 import com.khieuthichien.viewpager.fragment.ScreenSlidePageFragment;
-import com.khieuthichien.viewpager.question.Dethi;
+import com.khieuthichien.viewpager.question.Question;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ScreenSlideActivity extends FragmentActivity {
 
@@ -34,35 +40,67 @@ public class ScreenSlideActivity extends FragmentActivity {
     private PagerAdapter mPagerAdapter;
 
     //csdl
-    DatabaseHelper databaseHelper;
-    List<Dethi> dethiList;
+    QuestionController questionController;
+    ArrayList<Question> arr_Ques;
 
+    CounterClass timer;
+
+    String subject;
     int num_exam;
-    String test="";
 
     private TextView tvKiemTra;
+    private TextView tvTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
 
+//        DatabaseHelper db = new DatabaseHelper(this);
+//
+//        try {
+//            db.deleteDataBase();
+//            Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "bi loi rui", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        try {
+//            db.createDataBase();
+//            Toast.makeText(this, "Copy thành công", Toast.LENGTH_SHORT).show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         mPager = findViewById(R.id.pager);
 
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
         Intent intent = getIntent();
+        subject = intent.getStringExtra("thibanglaixe");
         num_exam = intent.getIntExtra("num_exam", 0);
-        test= intent.getStringExtra("test");
 
-        databaseHelper = new DatabaseHelper(this);
-        dethiList = new ArrayList<Dethi>();
-        dethiList = databaseHelper.getAllDethi();
+        questionController = new QuestionController(this);
+        arr_Ques = new ArrayList<Question>();
+        arr_Ques = questionController.getQuestion(num_exam, subject);
+
+        timer = new CounterClass(15 * 60 * 1000, 1000);
 
         tvKiemTra = findViewById(R.id.tvKiemTra);
+        tvTimer = findViewById(R.id.tvTimer);
+
+        tvTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        timer.start();
+
         tvKiemTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +111,8 @@ public class ScreenSlideActivity extends FragmentActivity {
     }
 
 
-    public List<Dethi> getData() {
-        return dethiList;
+    public ArrayList<Question> getData() {
+        return arr_Ques;
     }
 
     @Override
@@ -146,7 +184,7 @@ public class ScreenSlideActivity extends FragmentActivity {
         }
     }
 
-    public void CheckAnswer(){
+    public void CheckAnswer() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ScreenSlideActivity.this);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -155,7 +193,7 @@ public class ScreenSlideActivity extends FragmentActivity {
         builder.setTitle("Danh sách câu trả lời!");
         final Dialog dialog = builder.show();
 
-        CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(dethiList, this);
+        CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(arr_Ques, this);
 
         GridView gvQuestion;
         Button btnCancle;
@@ -191,6 +229,35 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         dialog.show();
 
+    }
+
+
+    public class CounterClass extends CountDownTimer {
+        /**
+         * @param millisInFuture    The number of millis in the future from the call
+         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
+         *                          is called.
+         * @param countDownInterval The interval along the way to receive
+         *                          {@link #onTick(long)} callbacks.
+         */
+
+        //millisInFuture: muốn 60giay thì lấy 60*1000
+        //countDownInterval: bước nảy từng giây một: 1000
+        public CounterClass(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            String countTime = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished), TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+            tvTimer.setText(countTime); //SetText cho textview hiện thị thời gian.
+        }
+
+        @Override
+        public void onFinish() {
+            tvTimer.setText("00:00");  //SetText cho textview hiện thị thời gian.
+        }
     }
 
 

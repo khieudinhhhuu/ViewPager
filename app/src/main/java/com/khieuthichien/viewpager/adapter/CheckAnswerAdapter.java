@@ -8,16 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.khieuthichien.viewpager.R;
-import com.khieuthichien.viewpager.question.Dethi;
+import com.khieuthichien.viewpager.question.Question;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckAnswerAdapter extends BaseAdapter {
 
-    List listData;
+    ArrayList listData;
     LayoutInflater inflater;
 
-    public CheckAnswerAdapter(List listData, Context context) {
+    public CheckAnswerAdapter(ArrayList listData, Context context) {
         this.listData = listData;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -39,7 +40,7 @@ public class CheckAnswerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Dethi dethi = (Dethi) getItem(position);
+        Question question = (Question) getItem(position);
         ViewHolder holder;
         if (convertView == null){
             holder = new ViewHolder();
@@ -54,9 +55,9 @@ public class CheckAnswerAdapter extends BaseAdapter {
 
         int i = position + 1;
         holder.tvNumAns.setText("Câu " + i + ": ");
-        holder.tvAnswer.setText(dethi.getTraloi());
+        holder.tvAnswer.setText(question.getTraloi());
 
-        return null;
+        return convertView;
     }
 
     private static class ViewHolder{

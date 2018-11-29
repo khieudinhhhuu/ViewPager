@@ -11,19 +11,18 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.khieuthichien.viewpager.R;
-import com.khieuthichien.viewpager.question.Dethi;
+import com.khieuthichien.viewpager.question.Question;
 import com.khieuthichien.viewpager.ui.ScreenSlideActivity;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ScreenSlidePageFragment extends Fragment {
 
-    List<Dethi> dethiList;
+    ArrayList<Question> arr_Ques;
     public static final String ARG_PAGE = "page";
     public int mPageNumber; //vi tri trang hien tai
 
@@ -61,15 +60,16 @@ public class ScreenSlidePageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         //lay data ben activity
-        dethiList = new ArrayList<Dethi>();
+        arr_Ques = new ArrayList<Question>();
         ScreenSlideActivity screenSlideActivity = (ScreenSlideActivity) getActivity();
-        dethiList = screenSlideActivity.getData();
+        arr_Ques = screenSlideActivity.getData();
 
+        //lay ve
         mPageNumber = getArguments().getInt(ARG_PAGE);
 
     }
 
-    public static ScreenSlidePageFragment create(int pageNumber){
+    public static ScreenSlidePageFragment create(int pageNumber) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_PAGE, pageNumber);
@@ -82,11 +82,39 @@ public class ScreenSlidePageFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         tvNum.setText("Câu " + (mPageNumber + 1));
-//        tvQuestion.setText(dethiList.get(mPageNumber).getQuestion2());
-//        radA.setText(dethiList.get(mPageNumber).getAnswer_a());
-//        radA.setText(dethiList.get(mPageNumber).getAnswer_b());
-//        radA.setText(dethiList.get(mPageNumber).getAnswer_c());
-//        radA.setText(dethiList.get(mPageNumber).getAnswer_d());
+        tvQuestion.setText(arr_Ques.get(mPageNumber).getQuestion2());
+        radA.setText(getItem(mPageNumber).getAnswer_a());
+        radA.setText(getItem(mPageNumber).getAnswer_b());
+        radA.setText(getItem(mPageNumber).getAnswer_c());
+        radA.setText(getItem(mPageNumber).getAnswer_d());
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(getActivity(), "Đây là đáp án", Toast.LENGTH_SHORT).show();
+                getItem(mPageNumber).choiceID = checkedId;
+                getItem(mPageNumber).setTraloi(getChoiceFromID(checkedId));
+            }
+        });
 
     }
+
+    public Question getItem(int position){
+        return arr_Ques.get(position);
+    }
+
+    //Lấy giá trị (vị trí) radiogroup chuyển thành đáp án A/B/C/D
+    private String getChoiceFromID(int ID) {
+        if (ID == R.id.radA) {
+            return "A";
+        } else if (ID == R.id.radB) {
+            return "B";
+        } else if (ID == R.id.radC) {
+            return "C";
+        } else if (ID == R.id.radD) {
+            return "D";
+        } else return "";
+    }
+
+
 }

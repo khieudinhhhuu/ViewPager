@@ -1,6 +1,7 @@
 package com.khieuthichien.viewpager.ui;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.khieuthichien.viewpager.R;
 import com.khieuthichien.viewpager.adapter.CacdethiAdapter;
 import com.khieuthichien.viewpager.database.DatabaseHelper;
+import com.khieuthichien.viewpager.database.QuestionController;
 import com.khieuthichien.viewpager.model.Cacdethi;
 import com.khieuthichien.viewpager.ui.MainActivity;
 import com.khieuthichien.viewpager.ui.ScreenSlideActivity;
@@ -27,7 +30,6 @@ public class CacdethiActivity extends AppCompatActivity {
 
     private List<Cacdethi> cacdethiList;
     private CacdethiAdapter adapter;
-    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,22 @@ public class CacdethiActivity extends AppCompatActivity {
 
         recycler = findViewById(R.id.recycler);
 
-        databaseHelper = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        try {
+            db.deleteDataBase();
+            Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "bi loi rui", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            db.createDataBase();
+            Toast.makeText(this, "Copy thành công", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         cacdethiList = new ArrayList<>();
 

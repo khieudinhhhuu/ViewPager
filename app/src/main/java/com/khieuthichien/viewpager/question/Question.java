@@ -1,6 +1,6 @@
 package com.khieuthichien.viewpager.question;
 
-public class Dethi {
+public class Question {
     private int _id;
     private String question2;
     private String answer_a;
@@ -10,9 +10,11 @@ public class Dethi {
     private String result;
     private int num_exam;
     private String image;
+    private String subject;
     private String traloi = "";
+    public int choiceID= -1; //hỗ trợ check Id của radiogroup
 
-    public Dethi(int _id, String question2, String answer_a, String answer_b, String answer_c, String answer_d, String result, int num_exam, String image, String traloi) {
+    public Question(int _id, String question2, String answer_a, String answer_b, String answer_c, String answer_d, String result, int num_exam, String image, String subject, String traloi) {
         this._id = _id;
         this.question2 = question2;
         this.answer_a = answer_a;
@@ -22,10 +24,11 @@ public class Dethi {
         this.result = result;
         this.num_exam = num_exam;
         this.image = image;
+        this.subject = subject;
         this.traloi = traloi;
     }
 
-    public Dethi() {
+    public Question() {
     }
 
     public int get_id() {
@@ -98,6 +101,14 @@ public class Dethi {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getTraloi() {

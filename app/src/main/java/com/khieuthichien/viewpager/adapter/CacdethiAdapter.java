@@ -45,34 +45,50 @@ public class CacdethiAdapter extends RecyclerView.Adapter<CacdethiAdapter.Cacdet
             public void onClick(View v) {
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 1")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 1);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 2")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 2);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 3")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 3);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 4")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 4);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 5")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 5);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 6")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 6);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 7")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 7);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
                 if (holder.tvtencacdethi.getText().toString().equals("Đề 8")){
                     Intent intent = new Intent(context, ScreenSlideActivity.class);
+                    intent.putExtra("num_exam", 8);
+                    intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
             }
