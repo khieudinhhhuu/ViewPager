@@ -5,8 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.khieuthichien.viewpager.R;
+import com.khieuthichien.viewpager.database.DatabaseHelper;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +30,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.deleteDataBase();
+        Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        try {
+            db.createDataBase();
+            Toast.makeText(this, "Cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
+
 }

@@ -35,25 +35,7 @@ public class CacdethiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cacdethi);
-
         recycler = findViewById(R.id.recycler);
-
-        DatabaseHelper db = new DatabaseHelper(this);
-
-        try {
-            db.deleteDataBase();
-            Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "bi loi rui", Toast.LENGTH_SHORT).show();
-        }
-
-        try {
-            db.createDataBase();
-            Toast.makeText(this, "Copy thành công", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         cacdethiList = new ArrayList<>();
 

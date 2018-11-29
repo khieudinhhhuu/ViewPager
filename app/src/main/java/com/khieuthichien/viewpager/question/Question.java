@@ -14,6 +14,19 @@ public class Question {
     private String traloi = "";
     public int choiceID= -1; //hỗ trợ check Id của radiogroup
 
+    public Question(int _id, String question2, String answer_a, String answer_b, String answer_c, String answer_d, String result, int num_exam, String image, String subject) {
+        this._id = _id;
+        this.question2 = question2;
+        this.answer_a = answer_a;
+        this.answer_b = answer_b;
+        this.answer_c = answer_c;
+        this.answer_d = answer_d;
+        this.result = result;
+        this.num_exam = num_exam;
+        this.image = image;
+        this.subject = subject;
+    }
+
     public Question(int _id, String question2, String answer_a, String answer_b, String answer_c, String answer_d, String result, int num_exam, String image, String subject, String traloi) {
         this._id = _id;
         this.question2 = question2;

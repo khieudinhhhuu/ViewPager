@@ -20,13 +20,13 @@ public class QuestionController {
     public ArrayList<Question> getQuestion(int num_exam, String subject) {
         ArrayList<Question> lsData = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM Dethibanglaixe WHERE num_exam = '" + num_exam + "' AND subject='" + subject + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM DeBLX  WHERE num_exam = '" + num_exam + "' AND subject='" + subject + "'", null);
         cursor.moveToFirst();
 
         while (cursor.moveToNext()) {
             Question item;
             item = new Question(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
-                    cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7), cursor.getString(8), cursor.getString(9), "");
+                    cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7), cursor.getString(8), cursor.getString(9));
             lsData.add(item);
         }
         return lsData;

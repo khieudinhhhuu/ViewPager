@@ -80,7 +80,7 @@ public class ScreenSlideActivity extends FragmentActivity {
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
         Intent intent = getIntent();
-        subject = intent.getStringExtra("thibanglaixe");
+        subject = intent.getStringExtra("subject");
         num_exam = intent.getIntExtra("num_exam", 0);
 
         questionController = new QuestionController(this);
