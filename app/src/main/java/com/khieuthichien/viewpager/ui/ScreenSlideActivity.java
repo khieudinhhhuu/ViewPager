@@ -35,9 +35,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ScreenSlideActivity extends FragmentActivity {
 
-    private static final int NUM_PAGES = 20;
+    private static final int NUM_PAGES = 19;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
+
+    public int checkAns = 0;
 
     //csdl
     QuestionController questionController;
@@ -50,6 +52,7 @@ public class ScreenSlideActivity extends FragmentActivity {
 
     private TextView tvKiemTra;
     private TextView tvTimer;
+    private TextView tvXemDiem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,7 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         tvKiemTra = findViewById(R.id.tvKiemTra);
         tvTimer = findViewById(R.id.tvTimer);
+        tvXemDiem = findViewById(R.id.tvScore);
 
         tvTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +109,16 @@ public class ScreenSlideActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 CheckAnswer();
+            }
+        });
+
+        tvXemDiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(ScreenSlideActivity.this, TestDoneActivity.class);
+                intent.putExtra("arr_Ques", arr_Ques);
+                startActivity(intent);
             }
         });
 
@@ -135,7 +149,7 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlidePageFragment().create(position);
+            return new ScreenSlidePageFragment().create(position, checkAns);
         }
 
         @Override
@@ -223,12 +237,25 @@ public class ScreenSlideActivity extends FragmentActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                timer.cancel();
+                result();
+                dialog.dismiss();
             }
         });
 
         dialog.show();
 
+    }
+
+    public void result() {
+        checkAns = 1;
+        if (mPager.getCurrentItem() >= 5){
+            mPager.setCurrentItem(mPager.getCurrentItem() -4);
+        }else if (mPager.getCurrentItem() <= 5){
+            mPager.setCurrentItem(mPager.getCurrentItem() +4);
+        }
+        tvXemDiem.setVisibility(View.VISIBLE);
+        tvKiemTra.setVisibility(View.GONE);
     }
 
 

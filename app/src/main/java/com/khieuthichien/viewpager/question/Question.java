@@ -1,6 +1,8 @@
 package com.khieuthichien.viewpager.question;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable{
     private int _id;
     private String question2;
     private String answer_a;

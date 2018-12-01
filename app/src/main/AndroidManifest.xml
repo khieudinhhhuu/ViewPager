@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ScreenSlideActivity" />
-        <activity android:name=".ui.CacdethiActivity"></activity>
+        <activity android:name=".ui.CacdethiActivity" />
+        <activity android:name=".ui.TestDoneActivity"></activity>
     </application>
 
 </manifest>
