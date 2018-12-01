@@ -1,8 +1,11 @@
 package com.khieuthichien.viewpager.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -44,6 +47,33 @@ public class TestDoneActivity extends AppCompatActivity {
         tvFalse.setText(""+numFalse);
         tvTrue.setText(""+numTrue);
         tvTotalPoint.setText(""+numTrue*1+"/20");
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(TestDoneActivity.this);
+                builder.setIcon(R.drawable.ic_error_outline_black_24dp);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn có muốn thoát hay không");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //to do
+                    }
+                });
+
+                builder.show();
+
+            }
+        });
+
     }
 
     private void begin() {

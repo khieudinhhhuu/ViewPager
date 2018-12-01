@@ -2,6 +2,7 @@ package com.khieuthichien.viewpager.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.CountDownTimer;
@@ -132,13 +133,32 @@ public class ScreenSlideActivity extends FragmentActivity {
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
+            dialogExit();
         } else {
             // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
+    }
+
+    public void dialogExit(){
+        final AlertDialog.Builder builder=new AlertDialog.Builder(ScreenSlideActivity.this);
+        builder.setIcon(R.drawable.ic_error_outline_black_24dp);
+        builder.setTitle("Thông báo");
+        builder.setMessage("Bạn có muốn thoát hay không?");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                timer.cancel();
+                finish();
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        builder.show();
     }
 
 
