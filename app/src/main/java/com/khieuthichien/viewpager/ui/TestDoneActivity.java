@@ -28,6 +28,7 @@ public class TestDoneActivity extends AppCompatActivity {
     private TextView tvFalse;
     private TextView tvNotAns;
     private TextView tvTotalPoint;
+    private TextView tvKetquacuoicung;
     private Button btnAgain;
     private Button btnExit;
     private Button btnSaveScore;
@@ -47,6 +48,13 @@ public class TestDoneActivity extends AppCompatActivity {
         tvFalse.setText(""+numFalse);
         tvTrue.setText(""+numTrue);
         tvTotalPoint.setText(""+numTrue*1+"/20");
+
+        if( numTrue*1 >= 16){
+            tvKetquacuoicung.setText("Đạt");
+        }else{
+            tvKetquacuoicung.setText("Trượt");
+        }
+
 
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +89,7 @@ public class TestDoneActivity extends AppCompatActivity {
         tvFalse = findViewById(R.id.tvFalse);
         tvNotAns = findViewById(R.id.tvNotAns);
         tvTotalPoint = findViewById(R.id.tvTotalPoint);
+        tvKetquacuoicung = findViewById(R.id.tvKetquacuoicung);
         btnAgain = findViewById(R.id.btnAgain);
         btnExit = findViewById(R.id.btnExit);
         btnSaveScore = findViewById(R.id.btnSaveScore);

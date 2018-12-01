@@ -2,6 +2,7 @@ package com.khieuthichien.viewpager.fragment;
 
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -54,6 +55,8 @@ public class ScreenSlidePageFragment extends Fragment {
         radC = rootView.findViewById(R.id.radC);
         radD = rootView.findViewById(R.id.radD);
 
+
+
         return rootView;
     }
 
@@ -86,12 +89,16 @@ public class ScreenSlidePageFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        tvNum.setText("Câu " + (mPageNumber + 1));
+        tvNum.setText("Câu " + (mPageNumber + 1)+"/20");
         tvQuestion.setText(arr_Ques.get(mPageNumber).getQuestion2());
+
         radA.setText(arr_Ques.get(mPageNumber).getAnswer_a());
-        radA.setText(arr_Ques.get(mPageNumber).getAnswer_b());
-        radA.setText(arr_Ques.get(mPageNumber).getAnswer_c());
-        radA.setText(arr_Ques.get(mPageNumber).getAnswer_d());
+        radB.setText(arr_Ques.get(mPageNumber).getAnswer_b());
+        radC.setText(arr_Ques.get(mPageNumber).getAnswer_c());
+        radD.setText(arr_Ques.get(mPageNumber).getAnswer_d());
+
+        //loadImage(mPageNumber);
+        imgIcon.setImageResource(getResources().getIdentifier(getItem(mPageNumber).getImage()+"", "drawable", "com.khieuthichien.viewpager"));
 
         if (checkAns != 0){
             radA.setClickable(false);
@@ -131,15 +138,34 @@ public class ScreenSlidePageFragment extends Fragment {
     //Hàm kiểm tra câu đúng, nếu câu đúng thì đổi màu background radiobutton tương ứng
     private void getCheckAns(String ans){
         if ( ans.equals("A") == true){
-            radA.setBackgroundColor(Color.RED);
+            radA.setBackgroundColor(Color.YELLOW);
         }else if ( ans.equals("B") == true){
-            radB.setBackgroundColor(Color.RED);
+            radB.setBackgroundColor(Color.YELLOW);
         }else if ( ans.equals("C") == true){
-            radC.setBackgroundColor(Color.RED);
+            radC.setBackgroundColor(Color.YELLOW);
         }else if ( ans.equals("D") == true){
-            radD.setBackgroundColor(Color.RED);
+            radD.setBackgroundColor(Color.YELLOW);
         }else ;
     }
+
+    // Load hình ảnh nếu có
+//    private void loadImage(int mPageNumber){
+//        try{
+//            String path = .get(mPageNumber).getPathImage();
+//            Drawable drawable = this.getContext().getResources().getDrawable(R.drawable.img_2);
+//            imgIcon.setImageDrawable(drawable);
+//            if (path.equals("")){
+//                imgIcon.setMaxHeight(0);
+//                imgIcon.setMinimumHeight(0);
+//            }
+//            else{
+//                imgIcon.setMinimumHeight(300);
+//                imgIcon.setMaxHeight(300);
+//            }
+//
+//        }catch(Exception e){}
+//    }
+
 
 
 }

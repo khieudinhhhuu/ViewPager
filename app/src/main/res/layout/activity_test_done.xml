@@ -8,120 +8,178 @@
     tools:context=".ui.TestDoneActivity">
 
     <TextView
-        android:text="Kết thúc"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="#cc5383f2"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Kết thúc"
         android:textColor="#f71c1c"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:id="@+id/textView" />
+        android:textStyle="bold" />
 
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Câu đúng:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:text="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvTrue"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="20"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Câu sai:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:text="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvFalse"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Câu chưa trả lời:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.79" />
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:text="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvNotAns"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Tổng điểm:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:text="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvTotalPoint"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="20/20"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Kết quả:"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvKetquacuoicung"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Đạt"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <Button
-            android:text="Chơi lại"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnAgain"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="Thoát"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Chơi lại"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btnExit"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="Lưu điểm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thoát"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btnSaveScore"
-            android:layout_weight="1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lưu điểm"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

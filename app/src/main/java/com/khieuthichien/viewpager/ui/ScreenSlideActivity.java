@@ -50,6 +50,7 @@ public class ScreenSlideActivity extends FragmentActivity {
 
     String subject;
     int num_exam;
+    String test="";
 
     private TextView tvKiemTra;
     private TextView tvTimer;
@@ -86,10 +87,17 @@ public class ScreenSlideActivity extends FragmentActivity {
         Intent intent = getIntent();
         subject = intent.getStringExtra("subject");
         num_exam = intent.getIntExtra("num_exam", 0);
+        test= intent.getStringExtra("test");
 
         questionController = new QuestionController(this);
         arr_Ques = new ArrayList<Question>();
-        arr_Ques = questionController.getQuestion(num_exam, subject);
+
+        //if(test.equals("yes") == true) {
+            arr_Ques = questionController.getQuestion(num_exam, subject);
+//        }else{
+//            arr_Ques= (ArrayList<Question>) intent.getExtras().getSerializable("arr_Ques");
+//        }
+
 
         timer = new CounterClass(15 * 60 * 1000, 1000);
 
@@ -136,7 +144,8 @@ public class ScreenSlideActivity extends FragmentActivity {
             dialogExit();
         } else {
             // Otherwise, select the previous step.
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+            //mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+            dialogExit();
         }
     }
 
