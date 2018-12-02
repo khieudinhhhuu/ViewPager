@@ -43,18 +43,16 @@
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="Câu hỏi thứ nhất " />
-
-                <ImageView
-                    android:id="@+id/imgIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/img_1"
-                    android:visibility="visible" />
-
+                
             </LinearLayout>
 
-
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_1"
+                android:visibility="visible" />
 
             <RadioGroup
                 android:id="@+id/radGroup"
@@ -109,7 +107,39 @@
                     android:layout_marginBottom="10dp"
                     android:paddingLeft="5dp"
                     android:text="Trả lời 4" />
+                
             </RadioGroup>
+
+            <!--<CheckBox-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:text="cb1"-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:id="@+id/cb1"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<CheckBox-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:text="cb2"-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:id="@+id/cb2"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<CheckBox-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:text="cb3"-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:id="@+id/cb3"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<CheckBox-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:text="cb4"-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:id="@+id/cb4"-->
+                <!--android:layout_height="wrap_content" />-->
+            
         </LinearLayout>
+        
     </ScrollView>
+    
 </LinearLayout>

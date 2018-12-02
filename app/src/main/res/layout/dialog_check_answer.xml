@@ -10,7 +10,7 @@
         android:numColumns="3"
         android:id="@+id/gvQuestion"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="22dp"
         android:layout_height="330dp"/>
 
     <LinearLayout

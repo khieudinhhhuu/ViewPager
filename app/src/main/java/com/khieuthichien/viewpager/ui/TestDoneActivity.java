@@ -22,7 +22,6 @@ public class TestDoneActivity extends AppCompatActivity {
     int numNoAns=0;
     int numTrue=0;
     int numFalse=0;
-    int totalScore = 0;
 
     private TextView tvTrue;
     private TextView tvFalse;

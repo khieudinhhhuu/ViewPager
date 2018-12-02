@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -36,9 +37,17 @@ public class ScreenSlidePageFragment extends Fragment {
     RadioButton radA, radB, radC, radD;
     ImageView imgIcon;
 
-    public ScreenSlidePageFragment() {
-        // Required empty public constructor
-    }
+//    public ScreenSlidePageFragment() {
+//        // Required empty public constructor
+//    }
+
+//    private CheckBox cb1;
+//    private CheckBox cb2;
+//    private CheckBox cb3;
+//    private CheckBox cb4;
+
+
+
 
 
     @Override
@@ -55,7 +64,10 @@ public class ScreenSlidePageFragment extends Fragment {
         radC = rootView.findViewById(R.id.radC);
         radD = rootView.findViewById(R.id.radD);
 
-
+//        cb1 = rootView.findViewById(R.id.cb1);
+//        cb2 = rootView.findViewById(R.id.cb2);
+//        cb3 = rootView.findViewById(R.id.cb3);
+//        cb4 = rootView.findViewById(R.id.cb4);
 
         return rootView;
     }
@@ -66,7 +78,7 @@ public class ScreenSlidePageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         //lay data ben activity
-        arr_Ques = new ArrayList<Question>();
+        arr_Ques = new ArrayList<>();
         ScreenSlideActivity screenSlideActivity = (ScreenSlideActivity) getActivity();
         arr_Ques = screenSlideActivity.getData();
 
@@ -97,8 +109,7 @@ public class ScreenSlidePageFragment extends Fragment {
         radC.setText(arr_Ques.get(mPageNumber).getAnswer_c());
         radD.setText(arr_Ques.get(mPageNumber).getAnswer_d());
 
-        //loadImage(mPageNumber);
-        imgIcon.setImageResource(getResources().getIdentifier(getItem(mPageNumber).getImage()+"", "drawable", "com.khieuthichien.viewpager"));
+        imgIcon.setImageResource(R.drawable.img_1);
 
         if (checkAns != 0){
             radA.setClickable(false);
@@ -148,23 +159,6 @@ public class ScreenSlidePageFragment extends Fragment {
         }else ;
     }
 
-    // Load hình ảnh nếu có
-//    private void loadImage(int mPageNumber){
-//        try{
-//            String path = .get(mPageNumber).getPathImage();
-//            Drawable drawable = this.getContext().getResources().getDrawable(R.drawable.img_2);
-//            imgIcon.setImageDrawable(drawable);
-//            if (path.equals("")){
-//                imgIcon.setMaxHeight(0);
-//                imgIcon.setMinimumHeight(0);
-//            }
-//            else{
-//                imgIcon.setMinimumHeight(300);
-//                imgIcon.setMaxHeight(300);
-//            }
-//
-//        }catch(Exception e){}
-//    }
 
 
 

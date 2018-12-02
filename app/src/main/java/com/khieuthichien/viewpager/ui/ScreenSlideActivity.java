@@ -92,11 +92,7 @@ public class ScreenSlideActivity extends FragmentActivity {
         questionController = new QuestionController(this);
         arr_Ques = new ArrayList<Question>();
 
-        //if(test.equals("yes") == true) {
-            arr_Ques = questionController.getQuestion(num_exam, subject);
-//        }else{
-//            arr_Ques= (ArrayList<Question>) intent.getExtras().getSerializable("arr_Ques");
-//        }
+        arr_Ques = questionController.getQuestion(num_exam, subject);
 
 
         timer = new CounterClass(15 * 60 * 1000, 1000);
@@ -289,13 +285,6 @@ public class ScreenSlideActivity extends FragmentActivity {
 
 
     public class CounterClass extends CountDownTimer {
-        /**
-         * @param millisInFuture    The number of millis in the future from the call
-         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
-         *                          is called.
-         * @param countDownInterval The interval along the way to receive
-         *                          {@link #onTick(long)} callbacks.
-         */
 
         //millisInFuture: muốn 60giay thì lấy 60*1000
         //countDownInterval: bước nảy từng giây một: 1000
@@ -313,6 +302,8 @@ public class ScreenSlideActivity extends FragmentActivity {
         @Override
         public void onFinish() {
             tvTimer.setText("00:00");  //SetText cho textview hiện thị thời gian.
+            timer.cancel();
+            result();
         }
     }
 
