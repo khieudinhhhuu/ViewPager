@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.khieuthichien.viewpager.R;
 import com.khieuthichien.viewpager.model.Cacdethi;
-import com.khieuthichien.viewpager.ui.ScreenSlideActivity;
+import com.khieuthichien.viewpager.ui.TSHdethiActivity;
 
 import java.util.List;
 
@@ -43,50 +43,50 @@ public class CacdethiAdapter extends RecyclerView.Adapter<CacdethiAdapter.Cacdet
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 1")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 1")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 1);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 2")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 2")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 2);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 3")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 3")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 3);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 4")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 4")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 4);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 5")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 5")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 5);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 6")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 6")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 6);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 7")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 7")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 7);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
                 }
-                if (holder.tvtencacdethi.getText().toString().equals("Đề 8")){
-                    Intent intent = new Intent(context, ScreenSlideActivity.class);
+                if (holder.tvtencacdethi.getText().toString().equals("Đề số 8")){
+                    Intent intent = new Intent(context, TSHdethiActivity.class);
                     intent.putExtra("num_exam", 8);
                     intent.putExtra("subject","thibanglaixe");
                     context.startActivity(intent);
